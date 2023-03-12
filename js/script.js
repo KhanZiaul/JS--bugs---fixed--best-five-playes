@@ -2,7 +2,6 @@
 const buttons = document.querySelectorAll('#card_btn .btn');
 const selectedPlayer = document.getElementById('selected');
 
-
 // Button click and selected player update
 function addPlayer(playerName){
     const li = document.createElement('li');
@@ -22,10 +21,12 @@ for(const button of buttons){
     })
 } 
 
+
 // A common function for getInput value
 function getInputValue(inputId){
     const inputField = document.getElementById(inputId);
     const inputFieldValue = inputField.value;
+    document.getElementById(inputId).value = '';
     return inputFieldValue
 };
 
@@ -33,8 +34,6 @@ function getValueOfElement(elementId, value){
     const element = document.getElementById(elementId);
     element.innerText = value;
 }
-
-
 
 // Budgets add event listeners
 document.getElementById('calculate_budget').addEventListener('click', function(){
