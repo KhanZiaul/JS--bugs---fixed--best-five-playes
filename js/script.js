@@ -17,7 +17,6 @@ for(const button of buttons){
             addPlayer(button.parentNode.children[0].innerText);
         } else{
             button.classList.remove('disabled');
-            addPlayer(button.parentNode.children[0].innerText)
             alert('5 Played already Selected');
         }
     })
@@ -52,4 +51,3 @@ document.getElementById('calculate_total_budget').addEventListener('click', func
     let totalExpense = playerTotalBudget + managerBudget + coachBudget;
         getValueOfElement( 'player_total_expense', totalExpense)
 })
-
