@@ -14,7 +14,8 @@ for(const button of buttons){
         if(selectedPlayer.children.length <= 4){
             button.classList.add('disabled');
             addPlayer(button.parentNode.children[0].innerText);
-        } else{
+        }
+        else{
             button.classList.remove('disabled');
             alert('5 Played already Selected');
         }
@@ -37,16 +38,43 @@ function getValueOfElement(elementId, value){
 
 // Budgets add event listeners
 document.getElementById('calculate_budget').addEventListener('click', function(){
-    const perPlayerBudget = getInputValue('per_player_budget');
-    let totalPlayerExpense =  perPlayerBudget * 5;
-    getValueOfElement( 'player_expense', totalPlayerExpense)  
+
+    const playerBudget = document.getElementById('per_player_budget');
+
+    if(playerBudget.value == '' || playerBudget.value < 0){
+        alert('Please enter valid amount');
+        return 0;
+    }
+
+    else{
+
+        const perPlayerBudget = getInputValue('per_player_budget');
+
+        let totalPlayerExpense =  perPlayerBudget * 5;
+
+        console.log(totalPlayerExpense);
+
+        getValueOfElement( 'player_expense', totalPlayerExpense) 
+        
+    }
 })
 document.getElementById('calculate_total_budget').addEventListener('click', function(){
     const perPlayerBudget = document.getElementById('player_expense');
     const playerTotalBudget = parseFloat(perPlayerBudget.innerText)
-    const managerBudget = parseInt(getInputValue('manager_budget'));
-    const coachBudget = parseInt(getInputValue('coach_budget'));
 
-    let totalExpense = playerTotalBudget + managerBudget + coachBudget;
-        getValueOfElement( 'player_total_expense', totalExpense)
+    const managerBudget = document.getElementById('manager_budget');
+    const coachBudget = document.getElementById('coach_budget');
+    
+    if(managerBudget.value == '' || managerBudget.value < 0 || coachBudget.value == '' || coachBudget.value < 0){
+        alert('Please enter valid amount for manager or coach');
+        return 0;
+    }
+
+    else{
+        
+        const managerBudget = parseInt(getInputValue('manager_budget'));
+        const coachBudget = parseInt(getInputValue('coach_budget'));
+        let totalExpense = playerTotalBudget + managerBudget + coachBudget;
+            getValueOfElement( 'player_total_expense', totalExpense)
+    }
 })
