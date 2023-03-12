@@ -45,8 +45,8 @@ document.getElementById('calculate_budget').addEventListener('click', function()
 document.getElementById('calculate_total_budget').addEventListener('click', function(){
     const perPlayerBudget = document.getElementById('player_expense');
     const playerTotalBudget = parseFloat(perPlayerBudget.innerText)
-    const managerBudget = getInputValue('manager_budget');
-    const coachBudget = getInputValue('coach_budget');
+    const managerBudget = parseInt(getInputValue('manager_budget'));
+    const coachBudget = parseInt(getInputValue('coach_budget'));
 
     let totalExpense = playerTotalBudget + managerBudget + coachBudget;
         getValueOfElement( 'player_total_expense', totalExpense)
